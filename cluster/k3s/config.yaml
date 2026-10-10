@@ -1,0 +1,5 @@
+disable:
+  - traefik
+  - servicelb
+
+secrets-encryption: true
