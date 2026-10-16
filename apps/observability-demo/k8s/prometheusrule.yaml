@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: observability-demo
+  namespace: observability-demo
+  labels:
+    release: kube-prometheus-stack
+
+spec:
+  groups:
+    - name: observability-demo
+      rules:
+        - alert: ObservabilityDemoHighErrorRate
+          expr: |
+            (
+              sum(rate(demo_http_requests_total{status=~"5.."}[2m]))
+              /
+              sum(rate(demo_http_requests_total[2m]))
+            ) > 0.2
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Observability demo has a high HTTP error rate"
+            description: "More than 20% of requests have returned 5xx responses for at least one minute."
