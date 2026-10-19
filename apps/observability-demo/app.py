@@ -16,29 +16,29 @@ app = Flask(__name__)
 REQUESTS = Counter(
     "demo_http_requests_total",
     "Total number of HTTP requests",
-    ["method", "endpoint", "status"],
+    ["method", "route", "status"],
 )
 
 ACTIVE_REQUESTS = Gauge(
     "demo_active_requests",
     "Number of HTTP requests currently being processed",
-    ["endpoint"],
+    ["route"],
 )
 
 REQUEST_DURATION = Histogram(
     "demo_http_request_duration_seconds",
     "HTTP request duration in seconds",
-    ["endpoint"],
+    ["route"],
 )
 
 
 @app.route("/")
-@ACTIVE_REQUESTS.labels(endpoint="/").track_inprogress()
-@REQUEST_DURATION.labels(endpoint="/").time()
+@ACTIVE_REQUESTS.labels(route="/").track_inprogress()
+@REQUEST_DURATION.labels(route="/").time()
 def index():
     REQUESTS.labels(
         method="GET",
-        endpoint="/",
+        route="/",
         status="200",
     ).inc()
 
@@ -46,14 +46,14 @@ def index():
 
 
 @app.route("/slow")
-@ACTIVE_REQUESTS.labels(endpoint="/slow").track_inprogress()
-@REQUEST_DURATION.labels(endpoint="/slow").time()
+@ACTIVE_REQUESTS.labels(route="/slow").track_inprogress()
+@REQUEST_DURATION.labels(route="/slow").time()
 def slow():
     time.sleep(random.uniform(2.0, 5.0))
 
     REQUESTS.labels(
         method="GET",
-        endpoint="/slow",
+        route="/slow",
         status="200",
     ).inc()
 
@@ -61,12 +61,12 @@ def slow():
 
 
 @app.route("/error")
-@ACTIVE_REQUESTS.labels(endpoint="/error").track_inprogress()
-@REQUEST_DURATION.labels(endpoint="/error").time()
+@ACTIVE_REQUESTS.labels(route="/error").track_inprogress()
+@REQUEST_DURATION.labels(route="/error").time()
 def error():
     REQUESTS.labels(
         method="GET",
-        endpoint="/error",
+        route="/error",
         status="500",
     ).inc()
 
