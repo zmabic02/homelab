@@ -13,9 +13,13 @@ spec:
         - alert: ObservabilityDemoHighErrorRate
           expr: |
             (
-              sum(rate(demo_http_requests_total{status=~"5.."}[2m]))
+              sum by (namespace) (
+                rate(demo_http_requests_total{status=~"5.."}[2m])
+              )
               /
-              sum(rate(demo_http_requests_total[2m]))
+              sum by (namespace) (
+                rate(demo_http_requests_total[2m])
+              )
             ) > 0.2
           for: 1m
           labels:

@@ -24,3 +24,7 @@ alertmanager:
         memory: 64Mi
       limits:
         memory: 128Mi
+
+    alertmanagerConfigSelector:
+      matchLabels:
+        alertmanager: kube-prometheus-stack

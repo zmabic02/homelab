@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: discord-webhook
+    namespace: observability-demo
+type: Opaque
+stringData:
+    url: ENC[AES256_GCM,data:1Px9I5z4U3N2SQLOF9sIVqbyNjOh+AYCOTJ56yj68QGoF8TM6MiL/Qmo6p6seF/1rgItth2fvVlF580ujaeah/x6q81lJKl8S7ZvcHyV3K/2MVAzHrI+LmyvdZjh6H47jt6MHbeW8eIGapnctH3W+53CD79Bh7QCjQ==,iv:KU4uOOyDyk9x3ldP6IfMU7Ru3fRBlgrSgV6vs8E3shw=,tag:TlbkDmPIkYGitdZUtJRGVg==,type:str]
+sops:
+    age:
+        - recipient: age1cdtnea4kqn29kujvmwd4ekrcpacjy3vn48ksrh6l7nrwuzjxmamqht3jwc
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBiUWtHaWd2alJsWk1oVG1a
+            KzdPZnk4UXVUeHpHYzIxSU5FTVdsSTBvaGg4CmlZYitEY0VoMERxTGh6SnBobEIr
+            YzcxVGNtbUlYRktYR2xONEREeUNiMkEKLS0tIFVCNzFVemFRVG1DN1UvY3dtWmM5
+            aUJPR3krTkljdkFTZnl0T0ZhRzRjb3MKor2+wK3BjF4z9SIe2dGo32xdbG5VXjo9
+            a8BS2Tea2yDhZK7wz4gsSfd+HqCNOO2Dyv1+kyD8Jk1DpTwp5miCCg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-10-19T17:20:55Z"
+    mac: ENC[AES256_GCM,data:PP6Zo+E77m+E2uPng9kIioPGSNnK3kSAMBBdXkaL8FYJHsIuG5buz0+baGJoV7x6VWTmA7O2UEV1ox8MYs/x9ePyYmf8fyp1zQPoWmqSAlBxCTfX0VGcxZN1LGJFNmo9+IuucFoWXZszedA0LSyxnOvnC0oETaFO67g65tMTe3k=,iv:Co8N/AhGWen+YfGekmQpbDr9xS+IyA2LcBG/RnrRC3c=,tag:3j0t+vyvBK2x7yGvvGHMkQ==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.12.2
