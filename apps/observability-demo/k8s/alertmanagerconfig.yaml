@@ -16,11 +16,6 @@ spec:
     groupInterval: 1m
     repeatInterval: 4h
 
-    matchers:
-      - name: severity
-        value: warning
-        matchType: "="
-
   receivers:
     - name: discord
       discordConfigs:

@@ -27,3 +27,25 @@ spec:
           annotations:
             summary: "Observability demo has a high HTTP error rate"
             description: "More than 20% of requests have returned 5xx responses for at least one minute."
+        - alert: ObservabilityDemoDown
+          expr: up{namespace="observability-demo", service="observability-demo"} == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Observability demo is down"
+            description: "Prometheus has been unable to scrape the observability demo for at least one minute."
+        - alert: ObservabilityDemoHighLatency
+          expr: |
+            histogram_quantile(
+              0.95,
+              sum by (namespace, le) (
+                rate(demo_http_request_duration_seconds_bucket[5m])
+              )
+            ) > 2
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Observability demo has high latency"
+            description: "The p95 request latency has exceeded 2 seconds for at least two minutes."
