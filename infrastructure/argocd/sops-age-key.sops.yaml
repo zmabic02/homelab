@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: sops-age-key
+    namespace: argocd
+type: Opaque
+stringData:
+    keys.txt: ENC[AES256_GCM,data:LkMvY4gM4KvOBZUNAXYFULdiwvoIeYGw4chAT6Y0hCsBg+vJFpMftIv1OXykwvdIsNIF+iDKotnsMgL2Ut51XvuWbGe3X9b6opI=,iv:E6hVLpd7a3FiwxA2cwDvTIDJAZAzjW7t8ilPqjvh194=,tag:4voRtHuCmLaY8wAv+qI77w==,type:str]
+sops:
+    age:
+        - recipient: age1cdtnea4kqn29kujvmwd4ekrcpacjy3vn48ksrh6l7nrwuzjxmamqht3jwc
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBuVHZsT3hCU0txaFE0aFRl
+            WGd6NmNHekk1c3ZNckwzOHNYczJ1ajhZY1RzCk1GRHdFZkJ5ZVgrc2VFMDhJb3dQ
+            UFhuY29zdFY3Qi9zSzVpRUxrQ240OUUKLS0tIHc1RHJ6VzhlRUhyb0srcEozT2Q5
+            dklDSFVJdXJFd3MxMmt1WWYybkFiTXMKs8okwYS3KiuwnhmAwE2gPgQ0ocBfd/4c
+            7/tzYD6l3EoBunxLVXECFUVLiDLE3q50ZCvxIlu1uaMzGR0HL1x1Uw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-10-24T07:47:54Z"
+    mac: ENC[AES256_GCM,data:rMHAQ1J1QcJLQDYp4u8WXFTipXUIHtL8yGJK56gvOJwBsLqtzVvmx6m5+8tlrgFhrOCek9T05SXynSPys9GOABnZbKi/bUiPwey4XDzMQ1kxiZkftJcnGxThwpbFaFoJ+7me6Vhf7HrbOeYpnGuLaLDfzTrNLuJ7Pu56G7ZrHew=,iv:bl0A3TdBANEJkXwPdAsyNHskGhG68NG0uqI+ZXiJfMQ=,tag:QDWfCVQmQJqnoOFfZlLCwg==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.12.2
