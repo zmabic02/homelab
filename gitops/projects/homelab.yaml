@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: homelab
+  namespace: argocd
+spec:
+  description: Homelab workloads and platform components
+
+  sourceRepos:
+    - https://github.com/zmabic02/homelab.git
+    - ghcr.io/prometheus-community/charts
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: observability-demo
+    - server: https://kubernetes.default.svc
+      namespace: monitoring
