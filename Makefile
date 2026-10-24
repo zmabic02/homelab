@@ -23,14 +23,3 @@ cluster-restart:
 
 cluster-status:
 	sudo systemctl status k3s
-
-observability-install:
-	helm upgrade --install kube-prometheus-stack \
-		oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack \
-		--namespace monitoring \
-		--create-namespace \
-		--version $(KUBE_PROMETHEUS_STACK_VERSION) \
-		--values infrastructure/observability/kube-prometheus-stack/values.yaml
-
-observability-uninstall:
-	helm uninstall kube-prometheus-stack --namespace monitoring
